@@ -571,7 +571,7 @@ func (ftp *FTP) Retr(path string, retrFn RetrFunc) (s string, err error) {
 		return
 	}
 
-	if !strings.HasPrefix(line, StatusFileOK) {
+	if !strings.HasPrefix(line, StatusFileOK) && !strings.HasPrefix(line, StatusExistingConnection) {
 		err = errors.New(line)
 		return
 	}
